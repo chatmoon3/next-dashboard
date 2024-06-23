@@ -36,20 +36,20 @@ export default function Page() {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <Image
-            // src="/desktop.png"
+            src="/desktop.png"
             width={1000}
             height={760}
             className="hidden md:block"
           />
           <Image
-            // src="/mobile.png"
+            src="/mobile.png"
             width={560}
             height={620}
             className="block md:hidden"
           />
-        </div>
+        </div> */}
       </div>
     </main>
   );
