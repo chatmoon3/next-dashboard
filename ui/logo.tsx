@@ -1,5 +1,5 @@
-import { HomeIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { HomeIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 export default function HomeLogo() {
   return (
@@ -9,5 +9,5 @@ export default function HomeLogo() {
         <p className="text-xl hover:underline whitespace-nowrap">Dashboard</p>
       </div>
     </Link>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import Image from "next/image";
-import HomeLogo from "@/ui/logo";
-import { ArrowRightIcon, UserPlusIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-import { shimmer } from "@/ui/animations";
+import Image from 'next/image'
+import HomeLogo from '@/ui/logo'
+import { ArrowRightIcon, UserPlusIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import { shimmer } from '@/ui/animations'
 
 export default function Page() {
   return (
@@ -52,5 +52,5 @@ export default function Page() {
         </div> */}
       </div>
     </main>
-  );
+  )
 }
