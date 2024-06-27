@@ -129,19 +129,25 @@ export default function SignUpForm() {
 				</div>
 
 				{/* 회원가입 버튼 */}
-				<SignUpBotton />
+				<SignUpButton />
 
 				{/* 폼 제출 오류 메시지 */}
+				{errorMessage && (
+					<>
+						<ExclamationCircleIcon className="w-5 h-5 text-red-500" />
+						<p className="text-sm text-red-500">{errorMessage}</p>
+					</>
+				)}
 			</div>
 		</form>
 	)
 }
 
-function SignUpBotton() {
+function SignUpButton() {
 	const { pending } = useFormStatus()
 	return (
-		<button className="w-full mt-4" aria-disabled={pending}>
+		<Button className="w-full mt-4" aria-disabled={pending}>
 			회원가입 <UserPlusIcon className="w-5 h-5 ml-auto text-gray-50" />
-		</button>
+		</Button>
 	)
 }

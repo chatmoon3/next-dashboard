@@ -1,6 +1,6 @@
 'use server'
 
-import { any, z } from 'zod'
+import { z } from 'zod'
 import { v4 as uuidv4 } from 'uuid'
 import { sql } from '@vercel/postgres'
 import bcrypt from 'bcrypt'
@@ -11,6 +11,8 @@ import type { User } from '@/types/definitions'
 
 import { signIn } from '@/auth'
 import { AuthError } from 'next-auth'
+
+import { signOut } from '@/auth'
 
 const EmailSchema = z.string().email({ message: 'Invalid email address. ' })
 const PasswordSchema = z
@@ -51,9 +53,10 @@ export async function signUp(
 		// 비밀번호 해싱, 사용자 추가
 		const hashedPassword = await bcrypt.hash(password, 10)
 		await sql`
-			INSERT INTO users (name, email, password, auth_key)
-			VALUE (${name}, ${email}, ${hashedPassword}, ${authKey})
+			INSERT INTO users (name, email, password)
+			VALUES (${name}, ${email}, ${hashedPassword})
 		`
+		// , ${authKey}
 	} catch (error) {
 		return '회원가입에 실패했습니다.'
 	}
@@ -88,5 +91,15 @@ export async function authenticate(
 			}
 		}
 		throw error
+	}
+}
+
+export async function performLogout() {
+	'use server'
+	try {
+		await signOut()
+		console.log('Successfully logged out')
+	} catch (error) {
+		console.error('Logout failed:', error)
 	}
 }
